@@ -10,6 +10,7 @@ Streamlit application for managing and synchronizing user accounts between SAMBA
 
 ### 📋 Table of Contents
 
+- [Screenshots](#screenshots)
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
@@ -18,6 +19,15 @@ Streamlit application for managing and synchronizing user accounts between SAMBA
 - [Project Structure](#project-structure)
 - [Technologies](#technologies)
 - [Security](#security)
+
+### 📸 Screenshots
+
+<details>
+
+
+screenshots available in the [screenshots](screenshots/) folder
+
+</details>
 
 ### ✨ Features
 
@@ -275,6 +285,7 @@ Application Streamlit pour la gestion et la synchronisation des comptes utilisat
 
 ### 📋 Table des matières
 
+- [Captures d'écran](#captures-décran)
 - [Fonctionnalités](#fonctionnalités)
 - [Prérequis](#prérequis)
 - [Installation](#installation-1)
@@ -283,6 +294,14 @@ Application Streamlit pour la gestion et la synchronisation des comptes utilisat
 - [Structure du projet](#structure-du-projet)
 - [Technologies utilisées](#technologies-utilisées)
 - [Sécurité](#sécurité)
+
+### 📸 Captures d'écran
+
+<details>
+
+Captures d'écran disponibles dans le dossier [screenshots](screenshots/)
+
+</details>
 
 ### ✨ Fonctionnalités
 

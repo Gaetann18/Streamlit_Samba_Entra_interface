@@ -161,9 +161,9 @@ class AuthSystem:
             st.markdown("""
             <div style="text-align: center;">
                 <p>Streamlit est un framework open-source en Python qui permet de créer des applications web interactives de manière rapide et simple.</p>
-                <p>Au CFA il va être principalement utilisé pour vous faire gagner du temps.</p>
+                <p></p>
                 <p>Des tâches répétitives qui peuvent être automatisées, des calculs fastidieux qui peuvent être simplifiés, des données qui peuvent être visualisées de manière plus claire, Streamlit sera là pour vous aider.</p>
-                <p>La seule contrainte est que Gaëtan soit pas trop nul en Python (et sur un bon jour, donc pas trop grincheux).</p>
+                <p></p>
                 <p><strong>L'outil est simple à utiliser et permet de gagner du temps dans le traitement des informations.</strong></p>
             </div>
             """, unsafe_allow_html=True)

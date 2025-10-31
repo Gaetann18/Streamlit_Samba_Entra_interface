@@ -98,3 +98,9 @@ QUICK_START_SAMBA_SYNC.md
 
 # Keytab files (Kerberos)
 *.keytab
+
+# Screenshots - Allow images in screenshots directory
+!screenshots/*.png
+!screenshots/*.jpg
+!screenshots/*.jpeg
+!screenshots/*.webp
