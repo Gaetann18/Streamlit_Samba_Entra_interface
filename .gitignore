@@ -1,0 +1,100 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.claude/
+
+# Streamlit
+.streamlit/
+
+# Fichiers de configuration sensibles
+config.py
+
+# Dossiers de données
+data/
+*.xlsx
+*.xls
+*.csv
+*.json
+*.log
+
+# Applications non liées à SAMBA/Entra/IMFR
+apps/DI.py
+apps/DI_Vierge_QR.pdf
+apps/bulletins.py
+apps/bulletins_dev_email.py
+apps/chunkOVH.py
+apps/connexion.py
+apps/database_viewer.py
+apps/debug_scraper.py
+apps/dossier_eleve.py
+apps/eleves_utils.py
+apps/excelexamens.py
+apps/generation_convocation_ccf.py
+apps/ilovepdf.py
+apps/presentation.py
+apps/testdi.pdf
+
+# Dossiers temporaires et de sauvegarde
+tmp_streamlit/
+save*/
+*_backup.py
+*_old/
+
+# Dossiers inutiles
+decoupe_pdf/
+apps/gestion_utilisateurs_old/
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Cache and user-specific files
+.cache/
+.local/
+.config/
+.bash_history
+.bash_logout
+.bashrc
+.profile
+.dotnet/
+.claude.json.backup
+.npm/
+.pki/
+.ssh/
+.sudo_as_admin_successful
+.vscode-server/
+.wdm/
+.wget-hsts
+
+# Test scripts
+test_*.py
+
+# Documentation generated during development
+FIX_*.md
+SYNC_*.md
+IMPLEMENTATION_COMPLETE_SUMMARY.md
+QUICK_START_SAMBA_SYNC.md
+
+# Keytab files (Kerberos)
+*.keytab

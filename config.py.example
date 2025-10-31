@@ -1,0 +1,145 @@
+# =============================================================================
+# CONFIGURATION POUR L'APPLICATION STREAMLIT
+# =============================================================================
+# 
+# INSTRUCTIONS:
+# 1. Copier ce fichier vers config.py
+# 2. Remplir les valeurs avec vos informations
+# 3. NE JAMAIS commiter config.py (déjà dans .gitignore)
+#
+# =============================================================================
+
+# --------------------
+# BASE DE DONNÉES MYSQL
+# --------------------
+
+MYSQL_CONFIG = {
+    'host': 'votre-serveur-mysql',
+    'user': 'votre_utilisateur',
+    'password': 'votre_mot_de_passe',
+    'database': 'nom_base_donnees',
+    'charset': 'utf8mb4',
+    'port': 3306
+}
+
+# --------------------
+# CONFIGURATION IMFR
+# --------------------
+
+IMFR_CONFIG = {
+    "url": "https://votre-imfr.fr",
+    "username": "votre_login_imfr",
+    "password": "votre_mot_de_passe_imfr",
+    "login_selector": "login",
+    "password_selector": "pwd",
+    "wait_time": 3,
+    "print_icon_selector": "i.fas.fa-print",
+    "pdf_excel_link_selector": "a[href*='imfr_module_publispostage_et_excel.php']",
+}
+
+# Alias pour compatibilité
+SCRAPING_CONFIG = IMFR_CONFIG
+
+# --------------------
+# SERVEUR SAMBA
+# --------------------
+
+SAMBA_SERVER = "ip-serveur-samba"
+SAMBA_USER = "utilisateur_ssh"
+SAMBA_PWD = "mot_de_passe_ssh"
+
+# --------------------
+# MICROSOFT ENTRA ID / AZURE AD
+# --------------------
+
+CLIENT_ID = "votre-client-id-azure"
+CLIENT_SECRET = "votre-client-secret"
+TENANT_ID = "votre-tenant-id"
+
+# Groupes de licences Microsoft 365
+LICENSE_GROUP_STUDENTS = "Nom du groupe étudiants"
+LICENSE_GROUP_STUDENTS_ID = "id-groupe-etudiants"
+LICENSE_GROUP_TEACHERS = "Nom du groupe enseignants"
+LICENSE_GROUP_OFFICE = "Nom du groupe Office"
+
+# --------------------
+# AUTHENTIFICATION
+# --------------------
+
+USER_ROLES = {
+    "formateur": {
+        "password": None,
+        "display_name": "Formateur",
+        "url_path": "/formateur",
+        "icon": "👨‍🏫"
+    },
+    "secretariat": {
+        "password": None,
+        "display_name": "Secrétariat",
+        "url_path": "/secretariat",
+        "icon": "👩‍💼"
+    },
+    "admin": {
+        "password": "votre_mot_de_passe_admin",
+        "display_name": "Administrateur",
+        "url_path": "/admin",
+        "icon": "👨‍💻"
+    }
+}
+
+# --------------------
+# APPLICATIONS
+# --------------------
+
+APPLICATIONS_CONFIG = {
+    "sync_ad_samba": {
+        "display_name": "Gestion utilisateurs",
+        "module": "sync_ad_samba",
+        "category": "👥 Gestion Utilisateurs",
+        "icon": "👥",
+        "permissions": ["admin"],
+        "description": "Création et synchronisation des comptes utilisateurs"
+    },
+    "recuperation_eleves": {
+        "display_name": "Récupération Liste Élèves",
+        "module": "recuperation_eleves",
+        "category": "👥 Élèves",
+        "icon": "🕷️",
+        "permissions": ["admin"],
+        "description": "Récupération automatique des listes d'élèves via web scraping"
+    },
+    # Ajouter vos autres applications ici...
+}
+
+# --------------------
+# MESSAGES D'AIDE
+# --------------------
+
+HELP_MESSAGES = {
+    'class_mapping': '💡 Les noms de classes sont automatiquement normalisés',
+    'password_generation': '🔐 Les mots de passe sont générés automatiquement',
+}
+
+# --------------------
+# DIVERS
+# --------------------
+
+APP_TITLE = "CFA - Gestion Utilisateurs"
+APP_ICON = "👥"
+
+# Fonctions utilitaires
+def get_apps_for_role(role):
+    """Retourne la liste des applications accessibles pour un rôle donné"""
+    return [app_id for app_id, config in APPLICATIONS_CONFIG.items() 
+            if role in config["permissions"]]
+
+def get_app_config(app_id):
+    """Retourne la configuration d'une application"""
+    return APPLICATIONS_CONFIG.get(app_id, None)
+
+def get_ignored_users():
+    """Liste des comptes système à ignorer"""
+    return [
+        'Administrator', 'Guest', 'krbtgt', 'root',
+        'admin', 'backup', 'nobody', 'sync'
+    ]
