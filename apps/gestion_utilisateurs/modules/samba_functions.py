@@ -24,22 +24,22 @@ def get_all_samba_users():
                 # Essayer plusieurs approches pour lister les utilisateurs
                 commands_to_try = [
                     # Approche 1: LDAP search avec authentification système
-                    "sudo -S ldapsearch -Y EXTERNAL -H ldapi:/// -b 'CN=Users,DC=cfa-eleves,DC=lan' '(&(objectClass=user)(!(objectClass=computer)))' sAMAccountName | grep sAMAccountName | cut -d' ' -f2",
+                    "sudo -S ldapsearch -Y EXTERNAL -H ldapi:/// -b 'CN=Users,DC=xxx-xxx,DC=lan' '(&(objectClass=user)(!(objectClass=computer)))' sAMAccountName | grep sAMAccountName | cut -d' ' -f2",
                     
                     # Approche 2: LDAP avec différentes bases de recherche
-                    "sudo -S ldapsearch -Y EXTERNAL -H ldapi:/// -b 'DC=cfa-eleves,DC=lan' '(&(objectClass=user)(!(objectClass=computer))(!(userAccountControl:1.2.840.113556.1.4.803:=2)))' sAMAccountName | grep sAMAccountName | cut -d' ' -f2",
+                    "sudo -S ldapsearch -Y EXTERNAL -H ldapi:/// -b 'DC=xxx-xxx,DC=lan' '(&(objectClass=user)(!(objectClass=computer))(!(userAccountControl:1.2.840.113556.1.4.803:=2)))' sAMAccountName | grep sAMAccountName | cut -d' ' -f2",
                     
                     # Approche 3: Via wbinfo (tous les domaines)
                     "wbinfo -u",
                     
                     # Approche 4: getent avec domaine explicite
-                    "getent passwd | grep '@cfa-eleves.lan' | cut -d: -f1 | cut -d@ -f1",
+                    "getent passwd | grep '@xxx-eleves.lan' | cut -d: -f1 | cut -d@ -f1",
                     
                     # Approche 5: SAMBA tool avec authentification admin
                     "sudo -S samba-tool user list --username=Administrator --password=$(cat /etc/samba/admin_password 2>/dev/null)",
                     
                     # Approche 6: LDAP direct avec bind admin
-                    "ldapsearch -x -H ldap://localhost:389 -D 'Administrator@cfa-eleves.lan' -w $(cat /etc/samba/admin_password 2>/dev/null) -b 'DC=cfa-eleves,DC=lan' '(&(objectClass=user)(!(objectClass=computer)))' sAMAccountName | grep sAMAccountName | cut -d' ' -f2",
+                    "ldapsearch -x -H ldap://localhost:389 -D 'Administrator@xxx-xxx.lan' -w $(cat /etc/samba/admin_password 2>/dev/null) -b 'DC=xxx-xxx,DC=lan' '(&(objectClass=user)(!(objectClass=computer)))' sAMAccountName | grep sAMAccountName | cut -d' ' -f2",
                     
                     # Approche 7: Listing complet via net
                     "net rpc user list -U Administrator%$(cat /etc/samba/admin_password 2>/dev/null) 2>/dev/null",
@@ -105,10 +105,10 @@ def check_user_exists_in_samba(username):
                 # Essayer plusieurs méthodes de vérification
                 check_commands = [
                     # Approche 1: Via wbinfo avec domaine
-                    f"wbinfo -i 'CFA-ELEVES\\{username}' >/dev/null 2>&1 && echo 'exists' || echo 'not found'",
+                    f"wbinfo -i 'xxx-ELEVES\\{username}' >/dev/null 2>&1 && echo 'exists' || echo 'not found'",
                     
                     # Approche 2: Via getent avec domaine
-                    f"getent passwd 'CFA-ELEVES\\{username}' >/dev/null 2>&1 && echo 'exists' || echo 'not found'",
+                    f"getent passwd 'xxx-ELEVES\\{username}' >/dev/null 2>&1 && echo 'exists' || echo 'not found'",
                     
                     # Approche 3: Via wbinfo sans domaine
                     f"wbinfo -i {username} >/dev/null 2>&1 && echo 'exists' || echo 'not found'",
@@ -117,7 +117,7 @@ def check_user_exists_in_samba(username):
                     f"sudo -S samba-tool user show {username} >/dev/null 2>&1 && echo 'exists' || echo 'not found'",
                     
                     # Approche 5: Vérification dans la liste wbinfo
-                    f"wbinfo -u | grep -i '^CFA-ELEVES\\\\{username}$' >/dev/null 2>&1 && echo 'exists' || echo 'not found'"
+                    f"wbinfo -u | grep -i '^xxx-ELEVES\\\\{username}$' >/dev/null 2>&1 && echo 'exists' || echo 'not found'"
                 ]
                 
                 for cmd in check_commands:

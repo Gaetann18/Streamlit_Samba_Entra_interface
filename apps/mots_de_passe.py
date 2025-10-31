@@ -234,7 +234,7 @@ def run():
                             with st.expander(f"{username_value} - {user['Prénom']} {user['Nom']}", expanded=True):
                                 # Informations utilisateur sans colonnes imbriquées
                                 st.write(f"**Login INFO & WIFI:** `{username_value}`")                                
-                                st.write(f"**Compte O365:** {username_value} @cfa-mfeo.fr")
+                                st.write(f"**Compte O365:** {username_value} @xxx-xxx")
                                 st.write(f"**Nom complet:** {user['Prénom']} {user['Nom']}")
                                 st.write(f"**Classe:** {user['Classe']} | **Groupe:** {user['Groupe']}")
                                 if 'Date création' in user and pd.notna(user['Date création']) and user['Date création'] != '':

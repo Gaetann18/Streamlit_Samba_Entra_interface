@@ -751,7 +751,7 @@ def run():
         st.subheader("🧪 Test de la commande de synchronisation")
         
         # Test kinit
-        kinit_cmd = f"KRB5_CONFIG={krb5_conf} kinit -k -t {keytab_path} streamlitadmin@CFA-ELEVES.LAN"
+        kinit_cmd = f"KRB5_CONFIG={krb5_conf} kinit -k -t {keytab_path} xxx@xxx-xxx.LAN"
         result = subprocess.run(kinit_cmd, shell=True, capture_output=True, text=True, env=env)
         
         st.write("**Test kinit:**")
@@ -939,7 +939,7 @@ def run():
             
             # Initialiser le ticket Kerberos avant la synchronisation
             st.info("🔐 Initialisation de l'authentification Kerberos...")
-            kinit_cmd = ["kinit", "-k", "-t", keytab_path, "streamlitadmin@CFA-ELEVES.LAN"]
+            kinit_cmd = ["kinit", "-k", "-t", keytab_path, "xxx@xxx-xxx.LAN"]
             kinit_result = subprocess.run(kinit_cmd, env=env, capture_output=True, text=True)
             
             if kinit_result.returncode != 0:
